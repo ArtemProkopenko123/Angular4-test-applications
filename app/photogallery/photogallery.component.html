@@ -3,14 +3,13 @@
     <div class="text-center">GALLERY</div>
         <div class="col-md-6">
         <form class="todo-form" (ngSubmit)="onSubmit(); todoForm.reset()" #todoForm="ngForm">
-           <label><input type="checkbox" > Задать заголовок страницы</label><br>
-            <label>  {{checkedProp}}
-                <input type="checkbox" > 
-                Alert
-            </label><br>
-            <input type="text" name="title"  required [(ngModel)]="newTitle" placeholder="Что нужно сделать?"> 
-            <button type="submit" [disabled]="todoForm.form.invalid">Добавить</button>
+          
+           <label><input type="checkbox" (click)="setTitle = !setTitle">Set page title</label><br>
+           
+           <label><input type="checkbox" (click)="alert = !alert"/> Alert</label><br>
+           
+            <input type="text" name="title"  required [(ngModel)]="newTitle" placeholder="What should I do?"> 
+            <button type="submit" [disabled]="todoForm.form.invalid">Submit</button>
         </form>
     </div>
-   
 </router-outlet>
