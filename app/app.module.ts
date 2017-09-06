@@ -1,23 +1,24 @@
-import { BrowserModule, Title } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
-import { TodoFormComponent } from './todo-form/todo-form.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { TodoItemComponent } from './todo-item/todo-item.component';
-import { TodoService } from './shared/todo.service';
-import { AlertModule } from 'ngx-bootstrap/alert';
-import { PhotogalleryComponent } from './photogallery/photogallery.component';
-import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent }   from './not-found.component';
-import { HomeComponent }   from './home.component';
-import { PhotogalleryService } from './shared/photogallery.service';
+import { BrowserModule, Title } from '@angular/platform-browser'
+import { RouterModule } from '@angular/router'
+import { NgModule } from '@angular/core'
+import { FormsModule } from '@angular/forms'
+import { AppComponent } from './app.component'
+import { TodoFormComponent } from './todo-form/todo-form.component'
+import { TodoListComponent } from './todo-list/todo-list.component'
+import { TodoItemComponent } from './todo-item/todo-item.component'
+import { TodoService } from './shared/todo.service'
+import { AlertModule } from 'ngx-bootstrap/alert'
+import { PhotogalleryComponent } from './photogallery/photogallery.component'
+import { appRoutes } from './routes'
+import { NotFoundComponent }   from './not-found.component'
+import { HomeComponent }   from './home.component'
+import { PhotogalleryService } from './shared/photogallery.service'
+import { ImageDetailComponent } from './photogallery/image/image-detail.component'
+import { ImageService } from './shared/image.service'
+import { ImageFilterPipe } from './shared/imageFilter.pipe'
 
-const appRoutes: Routes = [
-    { path: 'photogallery', component: PhotogalleryComponent },
-    { path: '', component: HomeComponent},
-    { path: '**', component: NotFoundComponent }
-];
+
+
 
 
 @NgModule({
@@ -28,17 +29,21 @@ const appRoutes: Routes = [
         TodoItemComponent,
         PhotogalleryComponent,
         NotFoundComponent,
-        HomeComponent
+        HomeComponent,
+        ImageDetailComponent,
+        ImageFilterPipe
     ],
     
     providers:  [ 
         TodoService,
         Title,
-        PhotogalleryService
+        PhotogalleryService,
+        ImageService,
+        ImageFilterPipe
                 ],
     
     imports:[
-        RouterModule.forRoot(appRoutes,{ enableTracing: true }),
+        RouterModule.forRoot(appRoutes),
         AlertModule.forRoot(),
         BrowserModule, 
         FormsModule,

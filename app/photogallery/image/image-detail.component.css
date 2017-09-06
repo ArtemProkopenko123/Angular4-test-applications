@@ -1,0 +1,21 @@
+
+.img-container {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    margin-top: 5%;
+}
+.caption-row {
+    text-align: center;
+}
+.caption-row span{
+    margin: 25px;
+    font-size: 1.5em;
+    padding: 18px;
+    display: inline-block;
+    background-color: lightgray;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    cursor: pointer;
+}

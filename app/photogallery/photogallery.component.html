@@ -1,15 +1,32 @@
 
 <router-outlet>
-    <div class="text-center">GALLERY</div>
-        <div class="col-md-6">
+    <br>
+        <div class="col-md-6 text-center">
         <form class="todo-form" (ngSubmit)="onSubmit(); todoForm.reset()" #todoForm="ngForm">
           
-           <label><input type="checkbox" (click)="setTitle = !setTitle">Set page title</label><br>
+           <label><input type="checkbox" (click)="setTitle = !setTitle">Set page title</label>
            
            <label><input type="checkbox" (click)="alert = !alert"/> Alert</label><br>
            
             <input type="text" name="title"  required [(ngModel)]="newTitle" placeholder="What should I do?"> 
             <button type="submit" [disabled]="todoForm.form.invalid">Submit</button>
         </form>
+    </div>
+    
+    <div class="col-md-12"><h2>Recent Photo</h2></div>
+    <div class="row text-center">
+      
+       <button class="btn  btn-info" [class.active]="filterBy=='all'" (click)="filterBy='all'">All</button>
+       <button class="btn  btn-info" [class.active]="filterBy=='boats'" (click)="filterBy='boats'">Boats</button>
+       <button class="btn  btn-info" [class.active]="filterBy=='camping'" (click)="filterBy='camping'">Camping</button>
+       <button class="btn  btn-info" [class.active]="filterBy=='love'" (click)="filterBy='love'">Love</button>
+       
+        <ul id="thumbnailsList" class="text-center image-wrap">
+            <li *ngFor="let image of (visibleImages | imageFilter:filterBy)">
+                <a [routerLink]="['/image', image.id]">
+                    <img src="{{image.url}}" class="img" width="200" height="160" alt="">
+                </a>
+            </li>
+        </ul>
     </div>
 </router-outlet>

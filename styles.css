@@ -20,7 +20,14 @@ ul {
     padding: 0;
     list-style: none;
 }
-
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: end;
+}
 header, footer {
     display: flex;
     justify-content: center;
@@ -33,8 +40,12 @@ header, footer {
     color: white;
 }
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
+}
+label {
+    display: inline-flex;
+    align-items: end;
 }
 button {
     border: 1px solid #fff;

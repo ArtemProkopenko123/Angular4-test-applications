@@ -1,25 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Component, OnChanges, Input } from '@angular/core';
+import { Title }  from '@angular/platform-browser';
+
 import { PhotogalleryService } from '../shared/photogallery.service';
-import { BrowserModule, Title }  from '@angular/platform-browser';
+import { ImageService } from '../shared/image.service';
 @Component({
   selector: 'app-photogallery',
   templateUrl: './photogallery.component.html',
   styleUrls: ['./photogallery.component.css']
 })
-export class PhotogalleryComponent implements OnInit {
+export class PhotogalleryComponent implements OnChanges {
+    
     title = 'Gallery';
-    newTitle = '';
-    setTitle = false;
-    alert = false;
-    public constructor(private titleService: Title ) {this.titleService.setTitle(this.title) }
+    newTitle = ''
+    setTitle = false
+    alert = false
+    visibleImages: any[] = []
+    @Input() filterBy?: string = 'all'
 
-   
-
-    onSubmit(){
-    if(this.setTitle) this.titleService.setTitle(this.newTitle);   
-    if(this.alert) alert(this.newTitle);
+    public constructor(private titleService: Title, private photoService : PhotogalleryService, private imageService : ImageService ) {
+        this.titleService.setTitle(this.title); 
+        this.visibleImages = this.imageService.getImages();
     }
 
-    ngOnInit() {}
+    onSubmit(){ 
+        if(this.setTitle) this.titleService.setTitle(this.newTitle);   
+        if(this.alert) this.photoService.alert(this.newTitle);;
+    }
+
+    ngOnChanges (){
+        this.visibleImages = this.imageService.getImages();
+    }
 }
