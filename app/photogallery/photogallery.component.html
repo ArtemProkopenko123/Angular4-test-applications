@@ -1,0 +1,16 @@
+
+<router-outlet>
+    <div class="text-center">GALLERY</div>
+        <div class="col-md-6">
+        <form class="todo-form" (ngSubmit)="onSubmit(); todoForm.reset()" #todoForm="ngForm">
+           <label><input type="checkbox" > Задать заголовок страницы</label><br>
+            <label>  {{checkedProp}}
+                <input type="checkbox" > 
+                Alert
+            </label><br>
+            <input type="text" name="title"  required [(ngModel)]="newTitle" placeholder="Что нужно сделать?"> 
+            <button type="submit" [disabled]="todoForm.form.invalid">Добавить</button>
+        </form>
+    </div>
+   
+</router-outlet>
