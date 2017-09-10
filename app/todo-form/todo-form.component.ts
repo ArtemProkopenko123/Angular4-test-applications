@@ -11,10 +11,11 @@ import { TodoService } from '../shared/todo.service';
 export class TodoFormComponent {
     
     title: string =  '';
-    
+    newTitle: string = ''
     constructor(private todoService: TodoService)  {}
 
     onSubmit(){ 
-        this.todoService.createTodo(this.title);
+        this.todoService.createTodo(this.newTitle);
+        console.log(this.todoService.getTodos());
     }
 }

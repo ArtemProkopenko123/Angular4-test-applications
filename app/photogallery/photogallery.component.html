@@ -23,7 +23,7 @@
        
         <ul id="thumbnailsList" class="text-center image-wrap">
             <li *ngFor="let image of (visibleImages | imageFilter:filterBy)">
-                <a [routerLink]="['/image', image.id]">
+                <a [routerLink]="['/photogallery', image.id]">
                     <img src="{{image.url}}" class="img" width="200" height="160" alt="">
                 </a>
             </li>

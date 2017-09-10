@@ -1,0 +1,24 @@
+
+<br>
+<div class="text-center">
+    <button (click)="sortByComplete(); show = !show">{{show ? 'SORT BY COMPLITED' : 'UNSORT'}}</button>
+</div>
+<br>
+<table *ngIf="show; tasksList" width="100%">
+    <tr *ngFor="let todo of tasksList;let i = index" [class.completed]="todo.completed">
+        <td>{{i +1}}</td>
+        <td>{{todo.title }}</td>
+        <td>{{todo.completed }}</td>
+    </tr> 
+</table>
+
+
+<table  *ngIf="!show; sortResult" width="100%">
+    <tr *ngFor="let sort of sortResult;let i = index" [class.completed]="sort.completed">
+        <td>{{i +1}}</td>
+        <td >{{sort.title}} </td>
+        <td>{{sort.completed}}</td>
+    </tr>
+
+</table>
+

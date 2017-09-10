@@ -8,7 +8,15 @@ export const todos = [
         completed: false
     },
     {
-        title: 'Write project',
+        title: 'Cool',
+        completed: true
+    },
+    {
+        title: 'Go to job',
         completed: false
+    },
+    {
+        title: 'Cool',
+        completed: true
     }
 ];

@@ -15,10 +15,10 @@ import { HomeComponent }   from './home.component'
 import { PhotogalleryService } from './shared/photogallery.service'
 import { ImageDetailComponent } from './photogallery/image/image-detail.component'
 import { ImageService } from './shared/image.service'
-import { ImageFilterPipe } from './shared/imageFilter.pipe'
-
-
-
+import { ImageFilterPipe } from './shared/imageFilter.pipe';
+import { CustomServicesComponent } from './services/custom-services.component'
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -31,7 +31,8 @@ import { ImageFilterPipe } from './shared/imageFilter.pipe'
         NotFoundComponent,
         HomeComponent,
         ImageDetailComponent,
-        ImageFilterPipe
+        ImageFilterPipe,
+        CustomServicesComponent
     ],
     
     providers:  [ 
@@ -47,7 +48,9 @@ import { ImageFilterPipe } from './shared/imageFilter.pipe'
         AlertModule.forRoot(),
         BrowserModule, 
         FormsModule,
-        RouterModule
+        RouterModule,
+        ModalModule.forRoot(),
+        HttpModule
     
     ],
     bootstrap:  [ AppComponent ]

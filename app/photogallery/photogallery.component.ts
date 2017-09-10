@@ -14,7 +14,9 @@ export class PhotogalleryComponent implements OnChanges {
     newTitle = ''
     setTitle = false
     alert = false
+
     visibleImages: any[] = []
+
     @Input() filterBy?: string = 'all'
 
     public constructor(private titleService: Title, private photoService : PhotogalleryService, private imageService : ImageService ) {
