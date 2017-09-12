@@ -12,42 +12,56 @@ import { todos } from '../shared/data';
  export class CustomServicesComponent  {
   
   tasksList: any[];
-  filtered: boolean = false;
   sortResult: any[];
-  show: boolean =true;
- 
+
   constructor(){
-    this.getTodos();
+    this.getTodos()
   }
   getTodos(){
-    this.tasksList = todos;
-    
+    this.tasksList = todos; 
   }
-
-  sortByComplete(){
+  checkTypeOfValue(value){
+    return typeof(eval("this.tasksList[0]."+value));
+  }
+  sortByComplete(value){
+    if(this.tasksList.length > 0){
+    //SORT IN ONE PARAMS NOT GOOD//
+    let type:string = this.checkTypeOfValue(value);
     let newTodos = this.tasksList;
     this.sortResult = [];
-    for(let i = 0; i < newTodos.length; i++){
-      if(this.tasksList[i].completed){
-        let countRes = this.sortResult.length;
-        if(countRes != 0){
-          for(let k=1;k < countRes; k++){
-            if(!this.sortResult[k].completed){
-              this.sortResult.splice( (k), 0, this.tasksList[i] );
-              break;
+    if(type == 'boolean'){
+      // IF BOOLEAN //
+        for(let i = 0; i < newTodos.length; i++){
+          if(this.tasksList[i].completed){
+            let countRes = this.sortResult.length;
+            if(countRes != 0){
+              for(let k=1;k < countRes; k++){
+                if(!this.sortResult[k].completed){
+                  this.sortResult.splice( (k), 0, this.tasksList[i] );
+                  break;
+                }
+              }
+            } else {
+              this.sortResult.unshift(this.tasksList[i]);
             }
+          } else {
+            this.sortResult.push(this.tasksList[i]);
           }
-        } else {
-          this.sortResult.unshift(this.tasksList[i]);
         }
-      } else {
-        this.sortResult.push(this.tasksList[i]);
-      }
-    }
-    this.filtered = true;
-    
-  }
+      
 
+        /* CHANGE todos NOT GOOD
+          this.sortResult = this.tasksList;
+          this.sortResult.sort((a,b) => a.completed - b.completed)
+        */
+      } else if(type == 'string') {
+        // IF STRING //
+        console.log('string');
+        ///* CHANGE todos NOT GOOD ///  this.sortResult = newTodos.sort(function(a,b) {return (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0);} )
+        
+      }
+    } else {alert("Data is undefined")}
+  }
 }
 
     
