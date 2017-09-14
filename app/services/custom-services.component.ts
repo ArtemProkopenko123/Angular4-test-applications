@@ -7,6 +7,7 @@ import { todos } from '../shared/data';
   selector: 'app-custom-services',
   templateUrl: './custom-services.component.html',
   styleUrls: ['./custom-services.component.css']
+
 })
 
  export class CustomServicesComponent  {
@@ -20,18 +21,19 @@ import { todos } from '../shared/data';
   getTodos(){
     this.tasksList = todos; 
   }
+
   checkTypeOfValue(value){
     return typeof(eval("this.tasksList[0]."+value));
   }
+
   sortByComplete(value){
     if(this.tasksList.length > 0){
     //SORT IN ONE PARAMS NOT GOOD//
     let type:string = this.checkTypeOfValue(value);
-    let newTodos = this.tasksList;
     this.sortResult = [];
     if(type == 'boolean'){
       // IF BOOLEAN //
-        for(let i = 0; i < newTodos.length; i++){
+        for(let i = 0; i < this.tasksList.length; i++){
           if(this.tasksList[i].completed){
             let countRes = this.sortResult.length;
             if(countRes != 0){
@@ -48,8 +50,6 @@ import { todos } from '../shared/data';
             this.sortResult.push(this.tasksList[i]);
           }
         }
-      
-
         /* CHANGE todos NOT GOOD
           this.sortResult = this.tasksList;
           this.sortResult.sort((a,b) => a.completed - b.completed)
@@ -58,10 +58,12 @@ import { todos } from '../shared/data';
         // IF STRING //
         console.log('string');
         ///* CHANGE todos NOT GOOD ///  this.sortResult = newTodos.sort(function(a,b) {return (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0);} )
-        
       }
     } else {alert("Data is undefined")}
   }
+
+
+
 }
 
     

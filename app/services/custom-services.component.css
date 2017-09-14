@@ -2,3 +2,14 @@
 tr.completed{
     background-color: rgb(170, 170, 170)
  }
+ .table-controls input {
+    font-size: 16px;
+    color: #757575;
+    background-color: #fafafa;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    padding: .25em;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    outline: none;
+    font-weight: 100;
+ }

@@ -1,12 +1,16 @@
 <div *ngIf="tasksList.length">
     <br>
-    <div class="text-center">
-        <button (click)="sortByComplete('title'); setFilter = true;" [disabled]="setFilter">SORT</button>
+    <div class="text-center table-controls">
+        <button (click)="sortByComplete('completed'); setFilter = true;" [disabled]="setFilter">SORT</button>
         <button (click)="getTodos();setFilter = false" [disabled]="!setFilter">UNSORT</button>
+        
+            <label> 
+                <input type="text" [(ngModel)]="term" placeholder="Search by title"/>
+            </label>
     </div>
     <br>
     <table *ngIf="!setFilter;"  width="100%" >
-        <tr *ngFor="let todo of tasksList;let i = index" [class.completed]="todo.completed">
+        <tr *ngFor="let todo of tasksList | filter:term;let i = index" [class.completed]="todo.completed">
             <td>{{i +1}}</td>
             <td>{{todo.title }}</td>
             <td>{{todo.completed }}</td>
@@ -15,7 +19,7 @@
 
 
     <table *ngIf="setFilter; sortResult"  width="100%">
-        <tr *ngFor="let sort of sortResult;let i = index" [class.completed]="sort.completed">
+        <tr *ngFor="let sort of sortResult ;let i = index" [class.completed]="sort.completed">
             <td>{{i +1}}</td>
             <td >{{sort.title}} </td>
             <td>{{sort.completed}}</td>

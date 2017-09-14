@@ -19,6 +19,7 @@ import { ImageFilterPipe } from './shared/imageFilter.pipe';
 import { CustomServicesComponent } from './services/custom-services.component'
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpModule } from '@angular/http';
+import { FilterPipe } from './services/filter.pipe';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { HttpModule } from '@angular/http';
         HomeComponent,
         ImageDetailComponent,
         ImageFilterPipe,
-        CustomServicesComponent
+        CustomServicesComponent,
+        FilterPipe
     ],
     
     providers:  [ 

@@ -25,3 +25,14 @@
 .todo-form button {
     margin-left: 16px;
 }
+
+input {
+    font-size: 16px;
+    color: #757575;
+    background-color: #fafafa;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    padding: .25em;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    outline: none;
+}
